@@ -44,5 +44,5 @@ workflows:
     jobs:
       - install-dependencies
       - build:
-          required:
+          requires:
             - install-dependencies
