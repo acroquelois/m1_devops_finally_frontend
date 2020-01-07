@@ -36,6 +36,17 @@ jobs:
           root: /tmp
           paths:
             - dist
+  front-deploy:
+    docker:
+      - image: circleci/node:dubnium-browsers
+    working_directory: ~/dist
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - run:
+          name: Deploy app
+          command: |
+            npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir /tmp/dist --prod
 
   
 workflows:
@@ -46,3 +57,7 @@ workflows:
       - build:
           requires:
             - install-dependencies
+      - front-deploy:
+          requires:
+            - build
+      
