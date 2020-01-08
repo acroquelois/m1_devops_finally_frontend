@@ -75,6 +75,9 @@ workflows:
       - build:
           requires:
             - install-dependencies
+      - docker-build-and-push:
+          requires:
+            - build
       - front-deploy:
           requires:
             - build
