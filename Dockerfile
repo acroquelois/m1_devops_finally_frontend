@@ -1,7 +1,7 @@
-FROM python:3.7.4
+FROM node:dubnium
 
-COPY . app/
+COPY . /app
 
 WORKDIR /app
 
-RUN pip install -r requirements/dev.txt
+CMD yarn global add node-gyp && yarn install && yarn start
