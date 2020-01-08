@@ -12,7 +12,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'https://desolate-citadel-61583.herokuapp.com/',
+  baseUrl: 'http://127.0.0.1:5000/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
