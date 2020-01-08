@@ -29,13 +29,13 @@ jobs:
       - run:
           name: Copy deployment artifacts to workspace
           command: |
-            cp dist/ /tmp/dist1 -r
+            cp dist/ /tmp/dist -r
       - store_artifacts:
-          path: /tmp/dist1
+          path: /tmp/dist
       - persist_to_workspace:
           root: /tmp
           paths:
-            - dist1
+            - dist
   docker-build-and-push:
     docker:
       - image: docker:17.05.0-ce-git
@@ -64,7 +64,7 @@ jobs:
       - run:
           name: Deploy app
           command: |
-            npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir /tmp/dist1 --prod
+            npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir /tmp/dist --prod
 
   
 workflows:
