@@ -32,10 +32,6 @@ jobs:
             cp dist/ /tmp/dist -r
       - store_artifacts:
           path: /tmp/dist
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - dist
   front-deploy:
     docker:
       - image: circleci/node:dubnium-browsers
